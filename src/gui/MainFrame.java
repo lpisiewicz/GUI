@@ -17,11 +17,13 @@ import javax.swing.JTable;
 public class MainFrame extends JFrame {
 	
 	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 	private JTable table;
 	private JButton clickMeButton;
 	private JComboBox comboBox;
 	private JDateChooser dataChooser;
-	
+
 	public MainFrame() {
 		setAlwaysOnTop(true);
 		initializeComponents();
@@ -76,6 +78,19 @@ public class MainFrame extends JFrame {
 		dataChooser.setBounds(20, 20, 100, 20);
 		dataChooser.setLocation(10, 70);
 		getContentPane().add(dataChooser);
+		
+		textField_1 = new JTextField();
+		textField_1.setName("textField_1");
+		textField_1.setBounds(205, 12, 86, 20);
+		getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setName("textField_2");
+		textField_2.setBounds(301, 12, 86, 20);
+		getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

@@ -68,7 +68,6 @@ public class ActionComponent {
 		try {
 			
 			JTextField textfield = (JTextField) finder.find(frame.target,c -> c instanceof JTextField && c.getClass().getName()!=JTextFieldDateEditor.class.getName() && c.isShowing());
-			System.out.println(textfield.getClass().getName());
 			return textfield;
 		} catch (ComponentLookupException e) {
 			e.printStackTrace();
@@ -76,6 +75,20 @@ public class ActionComponent {
 		}
 
 	}
+	
+	public static JTextField findTextField(FrameFixture frame, ComponentFinder finder, String name) {
+		try {
+			
+			JTextField textfield = (JTextField) finder.find(frame.target,c -> c instanceof JTextField && c.getClass().getName()!=JTextFieldDateEditor.class.getName() 
+					&& c.isShowing() && c.getName()==name);
+			return textfield;
+		} catch (ComponentLookupException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
 	
 	//JCalendarField
 	public static JTextFieldDateEditor findCalendar(FrameFixture frame, ComponentFinder finder) {

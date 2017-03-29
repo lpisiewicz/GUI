@@ -1,15 +1,14 @@
 package gui;
 
-import java.awt.Component;
-import java.awt.TextField;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
+import org.fest.swing.core.ComponentFinder;
 import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.fixture.JButtonFixture;
 import org.fest.swing.fixture.JTextComponentFixture;
 import org.junit.After;
 import org.junit.Before;
@@ -20,12 +19,14 @@ public class GuiTest {
 
 	
 	private FrameFixture frameFixture;
+	private static HashMap<String, String> map;
 	
 	@Before
 	
 	public void setUp() throws Exception {
 		System.out.println("Test start");
 		frameFixture=new FrameFixture(new MainFrame());
+		fillMap();
 	}
 
 	
@@ -35,23 +36,14 @@ public class GuiTest {
 		
 		JButton button=ActionComponent.findButton(frameFixture.robot.finder(), "Button");
 		ActionComponent.clickButton(frameFixture, button);
-		
-		 JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture, frameFixture.robot.finder());
-		//Second option to assigne combo Box
-		//JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture.robot.finder(), "combo");
-		ActionComponent.selectComboBoxValue(frameFixture, comboBox, 3);		
-		JTextField textfield=ActionComponent.findTextField(frameFixture, frameFixture.robot.finder());
-		JTextComponentFixture t=new JTextComponentFixture(frameFixture.robot, textfield);
-		t.deleteText();
-		t.enterText("Dupa");
-//		if (textfield !=null){
-//			
-//			frameFixture.textBox(textfield.getName()).deleteText();
-//			frameFixture.textBox(textfield.getName()).enterText("Dodano Napis");
-//		}
-		 
+		JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture, frameFixture.robot.finder());	 
+		ActionComponent.selectComboBoxValue(frameFixture, comboBox, 3);	
+	
+		SetAllTextFields(frameFixture, frameFixture.robot.finder(), map);
+	
 		JTextFieldDateEditor calendar=ActionComponent.findCalendar(frameFixture, frameFixture.robot.finder());
 		frameFixture.robot.click(calendar);
+		frameFixture.robot.enterText("2017-03-16");
 		System.out.println(calendar.getValue());
 	}
 	
@@ -62,8 +54,22 @@ public class GuiTest {
 	}
 	
 	
+	public static void SetAllTextFields(FrameFixture frameFixture, ComponentFinder finder, HashMap<String, String> map){
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+		    String key = entry.getKey();
+		    String value = entry.getValue();
+		    JTextField textfield=ActionComponent.findTextField(frameFixture, frameFixture.robot.finder(), key);
+			JTextComponentFixture fixTextfield=new JTextComponentFixture(frameFixture.robot, textfield);
+			fixTextfield.deleteText();
+			fixTextfield.enterText(value);
+		
+	}	
+	}
 	
-	
-	
-
+	public static void fillMap(){
+		map=new HashMap<>();
+		map.put("textField", "To");
+		map.put("textField_1", "Jest");
+		map.put("textField_2", "Test");
+	}
 }
