@@ -54,10 +54,15 @@ public class MainFrame extends JFrame {
 		getContentPane().add(clickMeButton);
 		
 		comboBox = new JComboBox();
-		comboBox.setBounds(10, 45, 28, 20);
+		comboBox.setName("combo");
+		String[] options=new String[]{"1", "2", "3", "4", "5"};
+		for (String s:options){
+		comboBox.addItem(s);}
+		comboBox.setBounds(10, 45, 145, 20);
 		getContentPane().add(comboBox);
 		
 		textField = new JTextField();
+		textField.setName("textField");
 		textField.setBounds(109, 12, 86, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
@@ -67,6 +72,9 @@ public class MainFrame extends JFrame {
 		getContentPane().add(table);
 		
 		dataChooser=new JDateChooser();
+		dataChooser.setName("Calendarr");
+		dataChooser.setBounds(20, 20, 100, 20);
+		dataChooser.setLocation(10, 70);
 		getContentPane().add(dataChooser);
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
