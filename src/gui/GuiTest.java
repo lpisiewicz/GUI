@@ -5,10 +5,13 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.text.TableView.TableCell;
 
 import org.fest.swing.core.ComponentFinder;
 import org.fest.swing.fixture.FrameFixture;
+import org.fest.swing.fixture.JTableFixture;
 import org.fest.swing.fixture.JTextComponentFixture;
 import org.junit.After;
 import org.junit.Before;
@@ -34,17 +37,25 @@ public class GuiTest {
 	@Test
 	public void test() {
 		
-		JButton button=ActionComponent.findButton(frameFixture.robot.finder(), "Button");
-		ActionComponent.clickButton(frameFixture, button);
-		JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture, frameFixture.robot.finder());	 
-		ActionComponent.selectComboBoxValue(frameFixture, comboBox, 3);	
-	
-		SetAllTextFields(frameFixture, frameFixture.robot.finder(), map);
-	
-		JTextFieldDateEditor calendar=ActionComponent.findCalendar(frameFixture, frameFixture.robot.finder());
-		frameFixture.robot.click(calendar);
-		frameFixture.robot.enterText("2017-03-16");
-		System.out.println(calendar.getValue());
+//		JButton button=ActionComponent.findButton(frameFixture.robot.finder(), "Button");
+//		ActionComponent.clickButton(frameFixture, button);
+//		JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture, frameFixture.robot.finder());	 
+//		ActionComponent.selectComboBoxValue(frameFixture, comboBox, 3);	
+//	
+//		SetAllTextFields(frameFixture, frameFixture.robot.finder(), map);
+//	
+//		JTextFieldDateEditor calendar=ActionComponent.findCalendar(frameFixture, frameFixture.robot.finder());
+//		frameFixture.robot.click(calendar);
+//		frameFixture.robot.enterText("2017-03-16");
+//		System.out.println(calendar.getValue());
+		
+		
+		JTable table=(JTable)frameFixture.robot.finder().findByName("table1");
+		int row=table.getRowCount();
+		int columns=table.getColumnCount();
+		
+		JTableFixture fixtureTable=frameFixture.table("table1");
+		fixtureTable.doubleClick();
 	}
 	
 	@After
