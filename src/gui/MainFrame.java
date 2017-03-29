@@ -13,6 +13,10 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.JTable;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
 public class MainFrame extends JFrame {
 	
@@ -23,10 +27,13 @@ public class MainFrame extends JFrame {
 	private JButton clickMeButton;
 	private JComboBox comboBox;
 	private JDateChooser dataChooser;
+	private JTable table_1;
 
 	public MainFrame() {
 		setAlwaysOnTop(true);
 		initializeComponents();
+		
+		System.out.println("Table size: Row = " +table_1.getRowCount()+"Column = " +table_1.getColumnCount());
 		
 		clickMeButton.addActionListener(new  ActionListener() {
 			
@@ -90,6 +97,34 @@ public class MainFrame extends JFrame {
 		textField_2.setBounds(301, 12, 86, 20);
 		getContentPane().add(textField_2);
 		textField_2.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(68, 153, 264, 120);
+		getContentPane().add(scrollPane);
+		
+		table_1 = new JTable();
+		table_1.setColumnSelectionAllowed(true);
+		table_1.setCellSelectionEnabled(true);
+		table_1.setName("table1");
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"Colum1", "Colum2", "Column3"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		scrollPane.setViewportView(table_1);
 		
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
