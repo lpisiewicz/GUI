@@ -4,16 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JButton;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import org.fest.swing.core.BasicComponentFinder;
 import org.fest.swing.core.ComponentFinder;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JButtonFixture;
+import org.fest.swing.fixture.JTableFixture;
 import org.fest.swing.fixture.JTextComponentFixture;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.fest.swing.data.TableCell;
+import org.fest.swing.data.TableCell.TableCellBuilder;
 public class GuiTest {
 
 	
@@ -46,19 +51,30 @@ public class GuiTest {
 		JButton calendarButton=ActionComponent.findCalendar(frameFixture, finder).getCalendarButton();
 		JButtonFixture fixtureCalendarButton=new JButtonFixture(frameFixture.robot, calendarButton);
 		fixtureCalendarButton.click();
-		
+		JPopupMenu menu=frameFixture.robot.findActivePopupMenu();
+
 		
 		//frameFixture.robot.click(calendar);
 		//frameFixture.robot.enterText("2017-03-16");
 		
 		
 		
-//		JTable table=(JTable)frameFixture.robot.finder().findByName("table1");
+		JTable table=(JTable)frameFixture.robot.finder().findByName("table1");
+
 //		int row=table.getRowCount();
 //		int columns=table.getColumnCount();
-//		
-//		JTableFixture fixtureTable=frameFixture.table("table1");
-//		fixtureTable.doubleClick();
+		JTableFixture fixtureTable=frameFixture.table("table1");
+		int column= fixtureTable.target.getSelectedColumn();
+		int row= fixtureTable.target.getSelectedRow();
+		
+		
+		
+		TableCell.TableCellBuilder cellBuilder=TableCell.row(row);
+		TableCell cell=cellBuilder.column(column);
+		fixtureTable.cell(cell).doubleClick();
+		//fixtureTable.cell(TableCell.row(0).column(0)).click();
+		
+		System.out.println("Row " + row + " " + "Column "+ column);
 	}
 	
 	@After
