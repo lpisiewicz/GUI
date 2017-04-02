@@ -54,7 +54,7 @@ public class ActionComponent {
 	
 	public static JComboBox<String> findComboBox(FrameFixture frame, ComponentFinder finder){
 		try {
-			JComboBox<String> textfield = (JComboBox<String>) finder.find(frame.target,c -> c instanceof JComboBox && c.isShowing());
+			JComboBox<String> textfield = (JComboBox<String>) finder.find(frame.target,c -> c instanceof JComboBox && c.isShowing() );
 			return textfield;
 		} catch (ComponentLookupException e) {
 			return null;
