@@ -1,6 +1,6 @@
 package lambda;
 
 interface AddNumber {
-	int addNumbers();
+	int addNumbers(String b);
 
 }
