@@ -4,20 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.text.TableView.TableCell;
 
+import org.fest.swing.core.BasicComponentFinder;
 import org.fest.swing.core.ComponentFinder;
 import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.fixture.JTableFixture;
+import org.fest.swing.fixture.JButtonFixture;
 import org.fest.swing.fixture.JTextComponentFixture;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.toedter.calendar.JTextFieldDateEditor;
 public class GuiTest {
 
 	
@@ -43,19 +39,26 @@ public class GuiTest {
 //		ActionComponent.selectComboBoxValue(frameFixture, comboBox, 3);	
 //	
 //		SetAllTextFields(frameFixture, frameFixture.robot.finder(), map);
-//	
-//		JTextFieldDateEditor calendar=ActionComponent.findCalendar(frameFixture, frameFixture.robot.finder());
-//		frameFixture.robot.click(calendar);
-//		frameFixture.robot.enterText("2017-03-16");
-//		System.out.println(calendar.getValue());
+
+		ComponentFinder finder=BasicComponentFinder.finderWithCurrentAwtHierarchy();
 		
 		
-		JTable table=(JTable)frameFixture.robot.finder().findByName("table1");
-		int row=table.getRowCount();
-		int columns=table.getColumnCount();
+		JButton calendarButton=ActionComponent.findCalendar(frameFixture, finder).getCalendarButton();
+		JButtonFixture fixtureCalendarButton=new JButtonFixture(frameFixture.robot, calendarButton);
+		fixtureCalendarButton.click();
 		
-		JTableFixture fixtureTable=frameFixture.table("table1");
-		fixtureTable.doubleClick();
+		
+		//frameFixture.robot.click(calendar);
+		//frameFixture.robot.enterText("2017-03-16");
+		
+		
+		
+//		JTable table=(JTable)frameFixture.robot.finder().findByName("table1");
+//		int row=table.getRowCount();
+//		int columns=table.getColumnCount();
+//		
+//		JTableFixture fixtureTable=frameFixture.table("table1");
+//		fixtureTable.doubleClick();
 	}
 	
 	@After
@@ -83,4 +86,7 @@ public class GuiTest {
 		map.put("textField_1", "Jest");
 		map.put("textField_2", "Test");
 	}
+	
+	
+	
 }

@@ -13,6 +13,7 @@ import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JButtonFixture;
 import org.fest.swing.fixture.JComboBoxFixture;
 
+import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
 public class ActionComponent {
@@ -91,10 +92,10 @@ public class ActionComponent {
 	
 	
 	//JCalendarField
-	public static JTextFieldDateEditor findCalendar(FrameFixture frame, ComponentFinder finder) {
+	public static JDateChooser findCalendar(FrameFixture frame, ComponentFinder finder) {
 		try {
 			
-			JTextFieldDateEditor calendar = (JTextFieldDateEditor) finder.find(frame.target,c -> c instanceof JTextFieldDateEditor && c.isShowing());
+			JDateChooser calendar = (JDateChooser) finder.find(frame.target,c -> c instanceof JDateChooser && c.isShowing());
 			System.out.println(calendar.getClass().getName());
 			return calendar;
 		} catch (ComponentLookupException e) {
