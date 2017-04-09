@@ -34,7 +34,7 @@ public class GuiTest {
 
 	@Test
 	public void test() {
-		
+		System.out.println("Dodano na stronie GITHUB");
 		JButton button=ActionComponent.findButton(frameFixture.robot.finder(), "Button");
 		ActionComponent.clickButton(frameFixture, button);
 		JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture, frameFixture.robot.finder());
