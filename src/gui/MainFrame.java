@@ -47,11 +47,12 @@ public class MainFrame extends JFrame {
 	}
 
 	public static void main(String[] args) {
+		
 		new MainFrame();
 	}
 
 	public void initializeComponents() {
-
+		System.out.println("Dodano linie github2");	
 		getContentPane().setLayout(null);
 		this.setSize(500, 500);
 		clickMeButton = new JButton("Click me");
