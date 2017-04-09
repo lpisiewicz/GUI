@@ -3,10 +3,7 @@ package gui;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JPopupMenu;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.core.BasicComponentFinder;
 import org.fest.swing.core.ComponentFinder;
@@ -38,12 +35,12 @@ public class GuiTest {
 	@Test
 	public void test() {
 		
-//		JButton button=ActionComponent.findButton(frameFixture.robot.finder(), "Button");
-//		ActionComponent.clickButton(frameFixture, button);
-//		JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture, frameFixture.robot.finder());	 
-//		ActionComponent.selectComboBoxValue(frameFixture, comboBox, 3);	
-//	
-//		SetAllTextFields(frameFixture, frameFixture.robot.finder(), map);
+		JButton button=ActionComponent.findButton(frameFixture.robot.finder(), "Button");
+		ActionComponent.clickButton(frameFixture, button);
+		JComboBox<String> comboBox=ActionComponent.findComboBox(frameFixture, frameFixture.robot.finder());
+		ActionComponent.selectComboBoxValue(frameFixture, comboBox, 3);
+
+		SetAllTextFields(frameFixture, frameFixture.robot.finder(), map);
 
 		ComponentFinder finder=BasicComponentFinder.finderWithCurrentAwtHierarchy();
 		
@@ -69,9 +66,9 @@ public class GuiTest {
 		
 		
 		
-		TableCell.TableCellBuilder cellBuilder=TableCell.row(row);
-		TableCell cell=cellBuilder.column(column);
-		fixtureTable.cell(cell).doubleClick();
+//		TableCell.TableCellBuilder cellBuilder=TableCell.row(row);
+//		TableCell cell=cellBuilder.column(column);
+//		fixtureTable.cell(cell).doubleClick();
 		//fixtureTable.cell(TableCell.row(0).column(0)).click();
 		
 		System.out.println("Row " + row + " " + "Column "+ column);

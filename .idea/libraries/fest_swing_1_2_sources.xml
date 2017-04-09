@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="fest-swing-1.2-sources">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/fest-swing-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/fest-assert-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/fest-reflect-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/fest-util-1.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/jcip-annotations-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/fest-swing-1.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/fest-assert-1.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/fest-reflect-1.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/fest-util-1.1.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fest-swing-1.2/lib/jcip-annotations-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
